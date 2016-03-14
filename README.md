@@ -9,6 +9,8 @@ Creates and switches to a new virtual environment. Just switches if the venv exi
 This creates a dedicated hidden directory in your home dir (`/home/$USER/.venvs`)
 where all venvs created by this script will be placed.
 
+These venvs use **python3** as the default version of python.
+
 This way, you can use `tree` without having the screen get flooded with the contents of
 the venv.
 
