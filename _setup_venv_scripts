@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+#################################################################
+# Script for creating and activating a virtual envvironment.
+#
+# The venv is placed in a dedicated directory for holding venvs.
+# 
+#################################################################
+
+# Dir to place the virtualenvs
+VENV_DIR="${VENV_DIR:-/home/$USER/.venvs}"
+mkdir -p $VENV_DIR
+
+
+__list_virtualenvs() {
+    local cur opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    opts=$( ls $VENV_DIR )
+
+    COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+    return 0
+}
+
+complete -F __list_virtualenvs _switch_virtualenv
+complete -F __list_virtualenvs _delete_virtualenv
+
+# alias to allow for virtualenv to be activated in current shell
+alias _switch_virtualenv=". _switch_virtualenv"
+alias _delete_virtualenv=". _delete_virtualenv"
+
