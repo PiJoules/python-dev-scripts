@@ -7,7 +7,7 @@ These scripts assume you have current directory (`.`) on your `PATH`.
 ## Scripts
 Add the following to your `.bashrc` to make these commands available globally.
 ```sh
-source ~/python-dev-scripts/_setup_venv_scripts
+source /path/to/python-dev-scripts/_setup_venv_scripts
 ```
 
 ####_switch_virtualenv
@@ -15,7 +15,7 @@ Creates and switches to a new virtual environment. Just switches if the venv exi
 This creates a dedicated hidden directory in your home dir (`/home/$USER/.venvs`)
 where all venvs created by this script will be placed.
 
-These venvs use **python3** as the default version of python.
+The default python version used is whatever is represented by the command `python`.
 
 This way, you can use `tree` without having the screen get flooded with the contents of
 the venv.
@@ -24,6 +24,13 @@ the venv.
 $ _switch_virtualenv venv  # Creates venv
 (venv) $ _switch_virtualenv venv2  # Creates venv2
 (venv2) $ _switch_virtualenv venv  # Just switches back to venv
+```
+
+To specify the python version, add the `-p` flag. The value provided to this must either
+be a path to the python executable or an existing `python` command.
+```sh
+$ _switch_virtualenv venv -p python3.5  # Create venv using python3.5
+$ _switch_virtualenv venv -p /usr/bin/python2.7  # Python version from path
 ```
 
 
