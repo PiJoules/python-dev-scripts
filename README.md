@@ -20,6 +20,8 @@ The default python version used is whatever is represented by the command `pytho
 This way, you can use `tree` without having the screen get flooded with the contents of
 the venv.
 
+Pip is automatically upgraded to the latest available version when creating a new venv.
+
 ```sh
 $ _switch_virtualenv venv  # Creates venv
 (venv) $ _switch_virtualenv venv2  # Creates venv2
@@ -32,6 +34,20 @@ be a path to the python executable or an existing `python` command.
 $ _switch_virtualenv venv -p python3.5  # Create venv using python3.5
 $ _switch_virtualenv venv -p /usr/bin/python2.7  # Python version from path
 ```
+
+To automatically install modules in a requirements file when creating a new venv,
+add the `-r` flag to `_switch_virtualenv`.
+```sw
+$ _switch_virtualenv venv -r my_requirements.txt
+```
+
+##### Default modules
+To install modules by default in a new venve created with `_switch_virtualenv`, include it in
+the `requirements.txt` located in the same directory as the `_switch_virtualenv` script.
+
+The following modules are located in this `requirements.txt` and installed by default:
+- ipython
+- requests
 
 
 #### _delete_virtualenv
