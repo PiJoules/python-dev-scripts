@@ -4,13 +4,13 @@ Scripts helpful for python development.
 These scripts assume you have current directory (`.`) on your `PATH`.
 
 
-## Scripts
+## Setup
 Add the following to your `.bashrc` to make these commands available globally.
 ```sh
 source /path/to/python-dev-scripts/_setup_venv_scripts
 ```
 
-####_switch_virtualenv
+##_switch_virtualenv
 Creates and switches to a new virtual environment. Just switches if the venv exists.
 This creates a dedicated hidden directory in your home dir (`/home/$USER/.venvs`)
 where all venvs created by this script will be placed.
@@ -41,7 +41,7 @@ add the `-r` flag to `_switch_virtualenv`.
 $ _switch_virtualenv venv -r my_requirements.txt
 ```
 
-##### Default modules
+### Default modules
 To install modules by default in a new venve created with `_switch_virtualenv`, include it in
 the `requirements.txt` located in the same directory as the `_switch_virtualenv` script.
 
@@ -50,7 +50,7 @@ The following modules are located in this `requirements.txt` and installed by de
 - requests
 
 
-#### _delete_virtualenv
+## _delete_virtualenv
 Deletes a virtual environment created with _switch_virtualenv. If you are in the venv you are
 about to delete, the venv is deactivated then deleted. If you are in a different venv from
 the one you are deleting, the venv will just be deleted and you will remain in the current
@@ -64,7 +64,7 @@ $ _switch_virtualenv venv  # Create and switch to venv
 ```
 
 
-####_setup_venv_scripts
+##_setup_venv_scripts
 Sets up autocompletion for `_switch_virtualenv` and `_delete_virtualenv`.
 Hitting tab when using these scripts will list any existing virtualenvs in
 `/home/pijoules/.venvs`.
