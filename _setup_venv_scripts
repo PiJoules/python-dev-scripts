@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
 #################################################################
-# Script for creating and activating a virtual envvironment.
-#
-# The venv is placed in a dedicated directory for holding venvs.
-# 
+# Script for setting up th other scripts and enabling autocomplete.
 #################################################################
 
 # Dir to place the virtualenvs
@@ -28,6 +25,7 @@ complete -F __list_virtualenvs _delete_virtualenv
 # alias to allow for virtualenv to be activated in current shell
 alias _switch_virtualenv=". _switch_virtualenv"
 alias _delete_virtualenv=". _delete_virtualenv"
+alias _init_package=". _init_package"
 
 # Add current dir to path
 export PATH=$PATH:"$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
