@@ -7,7 +7,45 @@
 # - .gitignore
 #################################################################
 
-# Copy the .gitignore to current dir
-script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cp $script_dir/resources/Python.gitignore .gitignore
+print_usage(){
+    echo "Usage: _init_package project_name"
+    echo "    PROJECT_NAME"
+    echo "        Name of your first born son."
+}
+
+exit_early=false
+
+# Parse cmd line args
+project_name=""
+while [[ $# > 0 ]]; do
+    key="$1"
+    case $key in
+        -h|--help)
+            exit_early=true
+            ;;
+        *)
+            project_name="$key"
+            ;;
+    esac
+    shift
+done
+
+# Check requirements
+if [ -z $project_name ]; then
+    echo "Missing required project_name"
+    exit_early=true
+fi
+
+if [[ $exit_early == "true" ]]; then
+    print_usage
+else
+    # Copy to current dir
+    script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+    cp $script_dir/resources/Python.gitignore .gitignore
+    cp $script_dir/resources/setup.py setup.py
+
+    # Create files
+    mkdir $project_name  # Project dir
+    touch requirements.txt dev-requirements.txt README.md
+fi
 

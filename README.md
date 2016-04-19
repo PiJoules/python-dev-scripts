@@ -64,10 +64,25 @@ $ _switch_virtualenv venv  # Create and switch to venv
 ```
 
 
+## _init_package
+Creates files in the current directory for setting up a package.
+Created files:
+- README.md
+- setup.py
+- project directory
+- requirements.txt
+- dev-requirements.txt
+- python .gitignore
+
+```sh
+$ _init_package project_name
+```
+
+
 ##_setup_venv_scripts
 Sets up autocompletion for `_switch_virtualenv` and `_delete_virtualenv`.
 Hitting tab when using these scripts will list any existing virtualenvs in
-`/home/pijoules/.venvs`.
+`/home/$USER/.venvs`.
 
 
 ```sh
