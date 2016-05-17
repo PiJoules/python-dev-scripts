@@ -5,7 +5,7 @@
 #################################################################
 
 # Dir to place the virtualenvs
-VENV_DIR="${VENV_DIR:-/home/$USER/.venvs}"
+VENV_DIR="${VENV_DIR:-$HOME/.venvs}"
 mkdir -p $VENV_DIR
 
 

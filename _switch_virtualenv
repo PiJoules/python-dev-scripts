@@ -17,6 +17,9 @@ print_usage(){
     echo "        'python' command."
     echo "    -r, --requirement REQUIREMENT_FILE"
     echo "        Path to requirements file. This is passed to pip -r."
+    echo "    --system-site-packages"
+    echo "        Give access to the global site-packages modules to the"
+    echo "        virtual environment."
 }
 
 # Join an array of strings.
@@ -32,6 +35,7 @@ venv_name=""
 python_exe="python"
 help=false
 requirements=()
+system_site_packages=""
 
 # Normally, this would be $# > 1, but the first arg is already parsed.
 while [[ $# > 0 ]]; do
@@ -45,6 +49,9 @@ while [[ $# > 0 ]]; do
             requirements+=("$2")
             shift
             ;;
+        --system-site-packages)
+            system_site_packages="--system-site-packages"
+            ;;
         -h|--help)
             help=true
             ;;
@@ -54,6 +61,10 @@ while [[ $# > 0 ]]; do
     esac
     shift # past argument or value
 done
+
+
+venv_args="-p $python_exe $system_site_packages $venv"
+
 
 if [[ $help == "true" ]] || [ -z $venv_name ]; then
     print_usage
@@ -66,12 +77,12 @@ else
         . $venv/bin/activate
         if [ "$?" != 0 ]; then
             # Create then try again
-            virtualenv -p $python_exe $venv
+            virtualenv $venv_args
             . $venv/bin/activate
         fi
     else
         # venv doesn't exist; create it
-        virtualenv -p $python_exe $venv
+        virtualenv $venv_args
         . $venv/bin/activate
 
         # Updgrade pip
