@@ -41,6 +41,10 @@ add the `-r` flag to `_switch_virtualenv`.
 $ _switch_virtualenv venv -r my_requirements.txt
 ```
 
+If you run into any errors creating the inital virtualenv relating to pip, just run the same command again.
+I have not yet looked into what's causing it, but running the same command seems to fix it and successfully
+create the venv.
+
 ### Default modules
 To install modules by default in a new venve created with `_switch_virtualenv`, include it in
 the `requirements.txt` located in the same directory as the `_switch_virtualenv` script.
