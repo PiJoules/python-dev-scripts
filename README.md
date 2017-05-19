@@ -1,16 +1,13 @@
 # python-scripts
 Scripts helpful for python development.
 
-These scripts assume you have current directory (`.`) on your `PATH`.
-
-
 ## Setup
 Add the following to your `.bashrc` to make these commands available globally.
 ```sh
 source /path/to/python-dev-scripts/_setup_venv_scripts
 ```
 
-##_switch_virtualenv
+## _switch_virtualenv
 Creates and switches to a new virtual environment. Just switches if the venv exists.
 This creates a dedicated hidden directory in your home dir (`/home/$USER/.venvs`)
 where all venvs created by this script will be placed.
